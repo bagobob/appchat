@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <form method="post">
+                 <h1 class="mt-5 mb-3 text-center">Please sign in</h1>
+                 <p class="mb-3 text-center text-muted"> Sign in to discuss with your friends </p>
+                {% if error %}
+                    <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="form-group">
+                    <label for="inputUsername">Username</label>
+                    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputPassword">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" required>
+                </div>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                <div class="d-flex justify-content-between">
+                    <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" name="_remember_me">
+                            <label class="form-check-label" for="remember_me">Remember me</label>
+                    </div>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button class="btn btn-lg btn-block btn-primary" type="submit">
+                    Sign in
+                </button>
+
+                <p class="mt-5 mb-3 text-center text-muted"> Not registered yet?
+                    <a href="#"> Create an account</a>
+                </p>
+            </form>
+        </div>
+    </div>
+{% endblock %}
