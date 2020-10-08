@@ -1,3 +1,3 @@
 # appchat
-Symfony web application
+Symfony web application|
 Messagerie d'équipe
