@@ -1,0 +1,82 @@
+[
+    {
+      "firstname": "John",
+      "lastname": "Doe",
+      "username": "johndoe",
+      "plainPassword": "secret123",
+      "encryptPassword": "$argon2id$v=19$m=65536,t=4,p=1$mnx5kDRrQmZ3dGQR60JT4Q$IjFMuVW36eOWZ33NLTTRBF0Z/+vUcguZ7KOzw6pbxlU",
+      "statut": 1
+    },
+    
+    {
+        "firstname": "Jane",
+        "lastname": "Amira",
+        "username": "mirajane",
+        "plainPassword": "secret321",
+        "encryptPassword": "$argon2id$v=19$m=65536,t=4,p=1$nH1vS004I5uyuXg8UfhFfQ$rlar85xXA58nGgfcsf+bFMkOtZw++G7qSX9w4uuGgPg",
+        "statut": 1
+    },
+
+    {
+        "firstname": "Brondon",
+        "lastname": "Keri",
+        "username": "luffy",
+        "plainPassword": "fightwith",
+        "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$azJ0djQ1Ynp3aUpHRnFjdQ$TxHkBkCkulDn6FcDarUw/w",
+        "statut": 1
+    },
+
+    {
+        "firstname": "nisrine",
+        "lastname": "lamard",
+        "username": "beauty2d",
+        "plainPassword": "shinelight",
+        "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$azJ0djQ1Ynp3aUpHRnFjdQ$iaBR55Nrbkb+vQboeFYvWg",
+        "statut": 1
+    },
+
+    {
+        "firstname": "Khadjidja",
+        "lastname": "kendrick",
+        "username": "beauty3d",
+        "plainPassword": "calmsoul",
+        "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$azJ0djQ1Ynp3aUpHRnFjdQ$wCfTrwFvcRL/55qqsJGwfw",
+        "statut": 1
+    },
+
+    {
+        "firstname": "boris",
+        "lastname": "tibago",
+        "username": "herbobo",
+        "plainPassword": "secretlife",
+        "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$azJ0djQ1Ynp3aUpHRnFjdQ$n4SXFhGDF6qDIu8VkDqQGA",
+        "statut": 1
+    },
+
+    {
+        "firstname": "vanelle",
+        "lastname": "woufi",
+        "username": "woufiV",
+        "plainPassword": "mylife",
+        "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$azJ0djQ1Ynp3aUpHRnFjdQ$0sWDnJJPkBVJay5rLQWR3Q",
+        "statut": 1
+    },
+
+    {
+        "firstname": "Brice",
+        "lastname": "Mala",
+        "username": "BiceMala",
+        "plainPassword": "sniper",
+        "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$N1dJNUVHOGZ6dE90MkN5RA$bnMyJE8TaRcWM/HrEOeN6Q",
+        "statut": 1
+    },
+
+    {
+        "firstname": "lidia",
+        "lastname": "myrleine",
+        "username": "butterfly",
+        "plainPassword": "projettest",
+        "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$SDdvWE1SbXRkZWI0Qzlwdw$S0uzd/tBBUXOpbhb0EuqDg",
+        "statut": 2
+    }
+  ]

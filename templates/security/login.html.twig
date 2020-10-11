@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Log in! {% endblock %}
 
 {% block body %}
     <div class="row">
@@ -11,6 +11,7 @@
                 {% if error %}
                     <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
+                
                 <div class="form-group">
                     <label for="inputUsername">Username</label>
                     <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" required autofocus>
