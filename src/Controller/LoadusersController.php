@@ -65,7 +65,7 @@ class LoadusersController extends AbstractController
             //we found this element, we remove it from the database
             if($found){
                 $em->remove($theuser);
-                $this->addFlash('success', 'Un utiliseur a été supprimé dans la base de données!!!!');
+                $this->addFlash('info', 'Un utiliseur a été supprimé dans la base de données!!!!');
             }
         } 
         $em->flush();
