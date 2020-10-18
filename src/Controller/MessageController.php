@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Conversation;
 use App\Entity\Message;
 use App\Repository\MessageRepository;
+use App\Repository\participantRepo;
 use App\Repository\ParticipantRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -15,11 +16,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mercure\PublisherInterface;
 use Symfony\Component\Serializer\SerializerInterface;
-
+use Symfony\Component\Mercure\Update;
 
 class MessageController extends AbstractController
 {
-
     const ATTRIBUTES_TO_SERIALIZE = ['id', 'content', 'createdAt', 'mine'];
 
     /**
@@ -35,9 +35,9 @@ class MessageController extends AbstractController
      */
     private $userRepository;
     /**
-     * @var ParticipantRepository
+     * @var participantRepo
      */
-    private $participantRepository;
+    private $participantRepo;
     /**
      * @var PublisherRepository
      */
@@ -47,13 +47,13 @@ class MessageController extends AbstractController
         EntityManagerInterface $entityManager,
         MessageRepository $messageRepository,
         UserRepository $userRepository,
-        ParticipantRepository $participantRepository,
+        ParticipantRepository $participantRepo,
         PublisherInterface $publisher
     ) {
         $this->entityManager = $entityManager;
         $this->messageRepository = $messageRepository;
         $this->userRepository = $userRepository;
-        $this->participantRepository = $participantRepository;
+        $this->participantRepo = $participantRepo;
         $this->publisher = $publisher;
     }
 
@@ -62,7 +62,7 @@ class MessageController extends AbstractController
      */
     public function show()
     {
-    	 if (!($this->getUser())) {
+        if (!($this->getUser())) {
             $this->addFlash('error', 'You must logged in');
 
             return $this->redirectToRoute('app_login');
@@ -74,21 +74,19 @@ class MessageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="getMessages", methods="GET")
-     * @param Request $request
-     * @param Conversation $conversation
-     * @return Response
+     * @Route("messages/{id}", name="getMessages", methods="GET", requirements={"id":"\d+"})
      */
-    public function index(Request $request, Conversation $conversation)
+    public function index(Conversation $conversation)
     {
+        
         // can i view the conversation
 
-        $this->denyAccessUnlessGranted('view', $conversation);
+       // $this->denyAccessUnlessGranted('view', $conversation);
 
         $messages = $this->messageRepository->findMessageByConversationId(
             $conversation->getId()
         );
-
+            dd($messages);
         /**
          * @var $message Message
          */
@@ -106,16 +104,12 @@ class MessageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="newMessage", methods="POST")
-     * @param Request $request
-     * @param Conversation $conversation
-     * @return JsonResponse
-     * @throws \Exception
+     * @Route("messages/{id}", name="newMessage", methods="POST",requirements={"id":"\d+"})
      */
     public function newMessage(Request $request, Conversation $conversation, SerializerInterface $serializer)
     {
         $user =  $this->getUser();
-        $recipient = $this->participantRepository->findParticipantByConversationIdAndUserId(
+        $recipient = $this->participantRepo->findParticipantByConversationIdAndUserId(
             $conversation->getId(),
             $user->getId()
         );
@@ -152,11 +146,12 @@ class MessageController extends AbstractController
                 sprintf("/conversations/%s", $recipient->getUser()->getUsername()),
             ],
             $messageSerialized,
-            [
-                sprintf("/%s", $recipient->getUser()->getUsername())
-            ]
+            true
+            /*[
+               // sprintf("/%s", $recipient->getUser()->getUsername())
+            ] */
         );
-
+        
         $this->publisher->__invoke($update);
 
         $message->setMine(true);
