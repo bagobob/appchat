@@ -44,14 +44,6 @@
         "statut": 1
     },
 
-    {
-        "firstname": "boris",
-        "lastname": "tibago",
-        "username": "herbobo",
-        "plainPassword": "secretlife",
-        "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$azJ0djQ1Ynp3aUpHRnFjdQ$n4SXFhGDF6qDIu8VkDqQGA",
-        "statut": 1
-    },
 
     {
         "firstname": "vanelle",
@@ -72,11 +64,37 @@
     },
 
     {
+        "firstname": "Lindsay",
+        "lastname": "Adrienne",
+        "username": "beauty",
+        "plainPassword": "sniper",
+        "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$N1dJNUVHOGZ6dE90MkN5RA$bnMyJE8TaRcWM/HrEOeN6Q",
+        "statut": 1
+    },
+
+    {
+        "firstname": "Leon",
+        "lastname": "Berger",
+        "username": "LeBoss",
+        "plainPassword": "etudes",
+        "encryptPassword": "$argon2d$v=19$m=16,t=4,p=1$aTlXWXNCZU5tYVVOWDFYcw$2iL0gTf4nNnw5DL7foyhgQ",
+        "statut": 1
+    },
+
+    {
         "firstname": "lidia",
         "lastname": "myrleine",
         "username": "butterfly",
         "plainPassword": "projettest",
         "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$SDdvWE1SbXRkZWI0Qzlwdw$S0uzd/tBBUXOpbhb0EuqDg",
         "statut": 2
+    },
+    {
+        "firstname": "boris",
+        "lastname": "tibago",
+        "username": "herbobo",
+        "plainPassword": "secretlife",
+        "encryptPassword": "$argon2id$v=19$m=16,t=4,p=1$azJ0djQ1Ynp3aUpHRnFjdQ$n4SXFhGDF6qDIu8VkDqQGA",
+        "statut": 1
     }
   ]
