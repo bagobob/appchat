@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class LoadusersController extends AbstractController
 {
     /**
-     * @Route("/", name="Loaduser")
+     * @Route("/login", name="loaduser")
      */
     public function Loaduser():response
     {
@@ -32,20 +32,22 @@ class LoadusersController extends AbstractController
                 ->getRepository(User::class)
                 ->findOneByUsername($user->getUsername());
 
-            if (!$AnUser) {  
+            if (!($AnUser)) {  
                 // 4) save the User!
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                $this->addFlash('success', 'Un utiliseur a été enregistré dans la base de données!!!!');
-                $fait = true;
+                //$this->addFlash('success', 'Un utiliseur a été enregistré dans la base de données!!!!');
             }
+            
 
         }
 
+        
         //2- UPDATE THE DATABASE WHEN WE UPATE JSON FILE
 
+        $data2 = json_decode(file_get_contents(__DIR__.'/user_data.json'), true);
         //get all users from the database
         $em = $this->getDoctrine()->getManager();
         $TheUsers = $em->getRepository(User::class)
@@ -53,7 +55,7 @@ class LoadusersController extends AbstractController
 
         foreach($TheUsers as $theuser){
             //search an element which is doesn't exists in the json file
-            foreach($data as $data_users){
+            foreach($data2 as $data_users){
                 if(strcmp($theuser->getUsername(), $data_users['username']) === 0 ){
                     $found = false;
                     break 1;
@@ -65,10 +67,10 @@ class LoadusersController extends AbstractController
             //we found this element, we remove it from the database
             if($found){
                 $em->remove($theuser);
-                $this->addFlash('info', 'Un utiliseur a été supprimé dans la base de données!!!!');
+               // $this->addFlash('info', 'Un utiliseur a été supprimé dans la base de données!!!!');
             }
         } 
-        $em->flush();
+        $em->flush(); 
 
         
         return $this->render('base.html.twig', [
